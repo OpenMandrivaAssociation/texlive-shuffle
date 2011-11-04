@@ -56,6 +56,7 @@ mathematics and physics.
 #- source
 %doc %{_texmfdistdir}/source/latex/shuffle/shuffle.dtx
 %doc %{_texmfdistdir}/source/latex/shuffle/shuffle.ins
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -66,3 +67,5 @@ mathematics and physics.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar fonts tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
