@@ -6,7 +6,7 @@
 # catalog-version 1.0
 Name:		texlive-shuffle
 Version:	1.0
-Release:	1
+Release:	2
 Summary:	A symbol for the shuffle product
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/fonts/shuffle
