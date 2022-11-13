@@ -1,19 +1,13 @@
-# revision 15878
-# category Package
-# catalog-ctan /fonts/shuffle
-# catalog-date 2008-10-30 09:46:08 +0100
-# catalog-license pd
-# catalog-version 1.0
 Name:		texlive-shuffle
-Version:	1.0
-Release:	11
+Version:	15878
+Release:	1
 Summary:	A symbol for the shuffle product
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/fonts/shuffle
 License:	PD
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/shuffle.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/shuffle.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/shuffle.source.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/shuffle.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/shuffle.doc.r%{version}.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/shuffle.source.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -25,12 +19,12 @@ source) for the shuffle product which is used in some part of
 mathematics and physics.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -49,24 +43,11 @@ mathematics and physics.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a1 -a2
+%autopatch -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar fonts tex doc source %{buildroot}%{_texmfdistdir}
-
-
-%changelog
-* Wed Jan 04 2012 Paulo Andrade <pcpa@mandriva.com.br> 1.0-2
-+ Revision: 755988
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 1.0-1
-+ Revision: 719531
-- texlive-shuffle
-- texlive-shuffle
-- texlive-shuffle
-- texlive-shuffle
-
