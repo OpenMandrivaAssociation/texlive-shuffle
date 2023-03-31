@@ -1,6 +1,6 @@
 Name:		texlive-shuffle
 Version:	15878
-Release:	1
+Release:	2
 Summary:	A symbol for the shuffle product
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/fonts/shuffle
