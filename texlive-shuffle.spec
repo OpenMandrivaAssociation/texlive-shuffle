@@ -1,53 +1,23 @@
-Name:		texlive-shuffle
-Version:	15878
-Release:	2
+%global tl_name shuffle
+%global tl_revision 78101
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.0
+Release:	%{tl_revision}.1
 Summary:	A symbol for the shuffle product
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/fonts/shuffle
-License:	PD
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/shuffle.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/shuffle.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/shuffle.source.r%{version}.tar.xz
+License:	pd
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/shuffle.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/shuffle.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/shuffle.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-The bundle provides a LaTeX package and a font (as MetaFont
-source) for the shuffle product which is used in some part of
-mathematics and physics.
+The bundle provides a LaTeX package and a font (as Metafont source) for
+the shuffle product which is used in some part of mathematics and
+physics.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/fonts/source/public/shuffle/shuffle.mf
-%{_texmfdistdir}/fonts/source/public/shuffle/shuffle10.mf
-%{_texmfdistdir}/fonts/source/public/shuffle/shuffle7.mf
-%{_texmfdistdir}/fonts/tfm/public/shuffle/shuffle10.tfm
-%{_texmfdistdir}/fonts/tfm/public/shuffle/shuffle7.tfm
-%{_texmfdistdir}/tex/latex/shuffle/Ushuffle.fd
-%{_texmfdistdir}/tex/latex/shuffle/shuffle.sty
-%doc %{_texmfdistdir}/doc/latex/shuffle/README
-%doc %{_texmfdistdir}/doc/latex/shuffle/shuffle.pdf
-#- source
-%doc %{_texmfdistdir}/source/latex/shuffle/shuffle.dtx
-%doc %{_texmfdistdir}/source/latex/shuffle/shuffle.ins
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar fonts tex doc source %{buildroot}%{_texmfdistdir}
